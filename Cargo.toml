@@ -7,7 +7,7 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/mnk-works/opsec-rs"
 homepage = "https://github.com/mnk-works/opsec-rs"
 readme = "README.md"
-keywords = ["opsec", "parody", "cli", "security", "humor", "tinfoil-hat"]
+keywords = ["opsec", "parody", "cli", "security", "humor"]
 categories = ["command-line-utilities", "development-tools"]
 
 [dependencies]
