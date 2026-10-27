@@ -1,0 +1,51 @@
+name: the witness workflow
+
+on:
+  schedule:
+    - cron: '47 3 * * *'
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  witness:
+    name: witness the night
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the void
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: the watcher blinks
+        run: |
+          echo "blink_count=$((312 + 1))" >> $GITHUB_ENV
+          echo "last_blink=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_ENV
+          echo "the watcher blinks at 03:47 UTC"
+
+      - name: witness the signal
+        run: |
+          echo "48 65 6c 6c 6f 20 66 72 6f 6d 20 74 68 65 20 76 6f 69 64" > witness-$BLINK_COUNT.txt
+          echo "signal recorded in witness-$BLINK_COUNT.txt"
+
+      - name: upload witness artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: witness-${{ env.blink_count }}
+          path: witness-${{ env.blink_count }}.txt
+          retention-days: 9999
+
+      - name: update the watcher
+        run: |
+          echo '{"blink_count": ${{ env.blink_count }}, "last_blink": "${{ env.last_blink }}"}' > the-watcher.json
+          echo "the watcher updated"
+
+      - name: commit the witness
+        run: |
+          git config user.name "witness-${{ env.blink_count }}"
+          git config user.email "witness-${{ env.blink_count }}@void.void"
+          git add the-watcher.json
+          git commit -m "witness ${{ env.blink_count }} records the blink" || true
+          git push origin HEAD:master || true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
