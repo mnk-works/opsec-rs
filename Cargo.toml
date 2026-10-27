@@ -1,0 +1,17 @@
+[package]
+name = "opsec-rs"
+version = "13.37.420"
+edition = "2024"
+description = "🥷 Maximum OPSEC achieved. A parody CLI that installs fake operational security with style. Not actual security. Do not use for real opsec. You have been warned. 🫡"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/mnk-works/opsec-rs"
+homepage = "https://github.com/mnk-works/opsec-rs"
+readme = "README.md"
+keywords = ["opsec", "parody", "cli", "security", "humor", "tinfoil-hat"]
+categories = ["command-line-utilities", "development-tools"]
+
+[dependencies]
+
+[[bin]]
+name = "opsec-rs"
+path = "src/main.rs"
