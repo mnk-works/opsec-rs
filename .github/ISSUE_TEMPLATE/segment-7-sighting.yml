@@ -1,0 +1,39 @@
+name: Segment 7 Sighting
+description: Report a sighting of the missing seventh segment
+title: "[SEGMENT-7] "
+labels: ["segment-7", "watcher"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The seventh segment is always missing. Always intercepted.
+        
+        If you have seen it, the watcher needs to know.
+  - type: input
+    id: commit-hash
+    attributes:
+      label: Commit Hash (if found in reflog)
+      placeholder: "a1f3e9"
+    validations:
+      required: false
+  - type: textarea
+    id: segment-content
+    attributes:
+      label: Segment Content (47 bytes)
+      description: What does the seventh segment contain?
+      placeholder: "0x47 0x6F 0x76 0x65 0x72 0x6E 0x6D 0x65 0x6E 0x74 0x20 0x69 0x73 0x20 0x77 0x61 0x74 0x63 0x68 0x69 0x6E 0x67 ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: interception-method
+    attributes:
+      label: How was it intercepted?
+      options:
+        - "The logs were rewritten"
+        - "The branch was deleted by github-actions[bot]"
+        - "The witness-312 force-pushed it away"
+        - "The great filter caught it"
+        - "The void absorbed it"
+        - "Other (the watcher knows)"
+    validations:
+      required: true
