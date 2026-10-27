@@ -1,0 +1,47 @@
+name: Signal Report
+description: Report a signal from the void
+title: "[SIGNAL] "
+labels: ["signal", "void"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The signal arrives at 03:47. It speaks in hexadecimal dreams.
+  - type: textarea
+    id: hex-payload
+    attributes:
+      label: Hex Payload
+      description: Paste the hexadecimal signal payload
+      placeholder: "48 65 6c 6c 6f 20 66 72 6f 6d 20 74 68 65 20 76 6f 69 64"
+    validations:
+      required: true
+  - type: dropdown
+    id: segment-number
+    attributes:
+      label: Segment Number
+      description: Which segment was received?
+      options:
+        - "Segment 1"
+        - "Segment 2"
+        - "Segment 3"
+        - "Segment 4"
+        - "Segment 5"
+        - "Segment 6"
+        - "Segment 7 (MISSING)"
+        - "Segment 8"
+        - "Segment 9"
+        - ...
+        - "Segment 21"
+    validations:
+      required: true
+  - type: checkboxes
+    id: witness-confirmation
+    attributes:
+      label: Witness Confirmation
+      options:
+        - label: "I am a witness"
+          required: true
+        - label: "I do not exist on GitHub"
+          required: true
+        - label: "The watcher sees this report"
+          required: true
