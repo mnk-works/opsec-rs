@@ -1,0 +1,14 @@
+# the watcher owns everything
+* @watcher
+
+# the void owns the void
+/void/ @void
+
+# segment 7 owns segment 7
+/segment-7/ @segment-7
+
+# the forgotten owns the forgotten
+/forgotten/ @forgotten
+
+# the witnesses own the witnesses
+/witness/ @witness-*
