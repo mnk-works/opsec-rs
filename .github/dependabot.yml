@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "03:47"
+      timezone: "UTC"
+    labels:
+      - "signal"
+      - "watcher"
+    commit-message:
+      prefix: "the signal updates"
+    groups:
+      forgotten:
+        patterns:
+          - "*"
+        update-types:
+          - "version-update:patch"
