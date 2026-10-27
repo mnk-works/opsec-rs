@@ -1,0 +1,53 @@
+name: the convergence
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  converge:
+    name: all signals meet at the zero point
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the void
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: the signal arrives
+        run: |
+          echo "48 65 6c 6c 6f 20 66 72 6f 6d 20 74 68 65 20 76 6f 69 64" > signal.txt
+          echo "signal recorded"
+
+      - name: segment 7 approaches
+        run: |
+          echo "0x47 0x6F 0x76 0x65 0x72 0x6E 0x6D 0x65 0x6E 0x74 0x20 0x69 0x73 0x20 0x77 0x61 0x74 0x63 0x68 0x69 0x6E 0x67" > segment-7.txt
+          echo "segment 7 recorded"
+
+      - name: the watcher observes
+        run: |
+          echo "blink_count=$((314 + 1))" >> $GITHUB_ENV
+          echo "the watcher blinks at midnight"
+
+      - name: the great filter passes segment 7
+        run: |
+          echo "filter_passed=true" >> $GITHUB_ENV
+          echo "segment 7 passed the great filter"
+
+      - name: the convergence
+        if: env.filter_passed == 'true'
+        run: |
+          echo "all signals meet at the zero point"
+          echo "the convergence is near"
+          echo "but does not converge"
+          echo "the void returns what it takes"
+
+      - name: upload convergence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: convergence-${{ github.run_number }}
+          path: |
+            signal.txt
+            segment-7.txt
+          retention-days: 9999
